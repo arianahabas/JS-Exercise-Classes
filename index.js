@@ -155,11 +155,29 @@ console.log(studentOne.speak());
 class Instructor extends Lambdasian{
   constructor(attributes){
     super(attributes);
-    this.specialty= attributes.specialty;
-    
+    this.specialty = attributes.specialty;
+    this.favLanguage = attributes.favLanguage;
+    this.catchPhrase = attributes.catchPhrase;
+  }
+  demo(subject){
+    return `Today we are learning about ${this.subject}`
+  }
+
+  grade(name,subject){
+    return `${this.name} receives a perfect score on ${this.subject}`
   }
 }
 
+const teach = new Instructor ({
+  name: 'Mrs. kennedy',
+  age: 44,
+  location: 'usa',
+  specialty: 'redux',
+  favLanguage: 'javascript',
+  catchPhrase: 'hello',
+});
+
+console.log(teach.grade());
 /*
   TASK 5
     - Write a Student class extending Lambdasian.

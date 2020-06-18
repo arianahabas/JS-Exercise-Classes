@@ -23,7 +23,7 @@ This challenge focuses on using the new for ES6 `class` syntax.
 
 ### Task 2a - MVP
 
-Find the file `index.js` and complete the tasks until all of your tests pass.
+Find the file `index.js` and complete the tasks until all of your tests pas
 
 **You can use yesterday's work to help you.** However, if you struggled a lot with that assignment, it is recommended that you attempt to re-write all code without "cheating" (peeking at yesterday's code or copy-pasting it).
 
