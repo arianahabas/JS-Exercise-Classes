@@ -160,11 +160,11 @@ class Instructor extends Lambdasian{
     this.catchPhrase = attributes.catchPhrase;
   }
   demo(subject){
-    return `Today we are learning about ${this.subject}`
+    return `Today we are learning about ${subject}`
   }
 
-  grade(name,subject){
-    return `${this.name} receives a perfect score on ${this.subject}`
+  grade(student, subject){
+    return `${student} receives a perfect score on ${subject}`
   }
 }
 
@@ -177,7 +177,9 @@ const teach = new Instructor ({
   catchPhrase: 'hello',
 });
 
-console.log(teach.grade());
+console.log(teach.grade("ari","math"));
+console.log(teach.speak());
+
 /*
   TASK 5
     - Write a Student class extending Lambdasian.
@@ -193,10 +195,39 @@ console.log(teach.grade());
         + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
-class Student {
-
+class Student extends Lambdasian {
+  constructor (attributes){
+    super(attributes);
+    this.previousBackground = attributes.previousBackground;
+    this.className = attributes.className;
+    this.favSubjects = attributes.favSubjects;
+  }
+  listSubjects(){
+    return `Loving ${this.favSubjects}!`
+  }
+  
+  PRAssignment(subject){
+    return `${this.name} has submitted a PR for ${subject}`
+  }
+ 
+  sprintChallenge(subject){
+    return `${this.name} has begun a sprint challenge on ${subject}`
+  }
 }
 
+const ted = new Student ({
+name: "ted",
+age: 33,
+location: "thailand",
+previousBackground:"none",
+className: "web33",
+favSubjects: "math"
+});
+
+console.log(ted.listSubjects());
+console.log(ted.sprintChallenge("chemistry"));
+console.log(ted.PRAssignment("english"));
+console.log(ted.speak());
 /*
   TASK 6
     - Write a ProjectManager class extending Instructor.
@@ -210,9 +241,34 @@ class Student {
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-class ProjectManager {
+class ProjectManager extends Instructor{
+  constructor (attributes){
+    super (attributes);
+    this.gradClassName = attributes.gradClassName;
+    this.favInstructor = attributes.favInstructor;
+  }
+  standUp(slackChannel){
+    return `${this.name} announces to ${slackChannel}, @channel standy times!}`
+  }
+
+  debugsCode(student, subject){
+    return `${this.name} debugs ${student}'s code on ${subject}.`
+  }
 
 }
+
+const manager = new ProjectManager ({
+  name: 'Mr. Peterson',
+  age: 34,
+  location: 'germany',
+  specialty: 'javascript',
+  favLanguage: 'python',
+  catchPhrase: 'no.....way.',
+});
+
+console.log(manager.speak());
+console.log(manager.debugsCode("charlie", "computer science"));
+console.log(manager.grade("ana", "french"));
 
 /*
   STRETCH PROBLEM (no tests!)
